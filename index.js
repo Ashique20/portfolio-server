@@ -30,6 +30,11 @@ run()
 
 const portCollection = client.db('portfolio').collection('portCollection')
 
+app.get('/message',async (req,res)=>{
+    const query={};
+    const messages = await portCollection.find(query).toArray();
+    res.send(messages)
+})
 
 app.post('/message', async(req,res)=>{
      const data = req.body;
@@ -39,6 +44,8 @@ app.post('/message', async(req,res)=>{
      res.send(result)
   
 })
+
+
 
 
   
